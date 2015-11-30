@@ -1,0 +1,67 @@
+
+
+Students:
+	- Primary user
+	- daily use
+	- computer experience: novice
+	- application familiarity: Novice (1st Bachelor) tot Competent Performer (2nd master) (similarities with systems like Pointcarre)
+	- extent of task knowledge: High
+	- usage frequency: Daily
+	- Usage: discretionary
+	- motivation:
+		* postive: 
+			1. eliminates the search for contact information
+	- number of users: 12.000+
+	- tasks: 
+		* Watch overciew of courses (number of new questions / answers per course)
+		* Watch overview of questions statust per course (answered, follow-up question unanswered, unanswered)
+		* Ask a question regarding a course (public or private)
+		* Mark a question as answered (only if he is the original person who asked the question)
+		* Ask follow-up question
+
+Professors:
+	- Primary user
+	- daily use
+	- computer experience: novice
+	- application familiarity: Competent Perfomer (similarities with systems like Pointcarre)
+	- extent of task knowledge: High
+	- usage frequency: Daily
+	- Usage: Mandatory
+	- motivation:
+		* positive:
+			1. Questions, seperated by class instead of cluttered in email inbox
+			2. Preventing ducplicate questions by making a question public
+		* negative:
+			1. Might prefer email
+	- number of users: 700
+	- tasks: 
+		* Watch overview of courses (number off new questions, follow up questions per course)
+		* Watch questions per course (unanswered new, unanswered follow up question, answered)
+		* Filter questions (unanswered new, unanswered follow up question, answered)
+		* Change private question to public
+		* Answer (follow-up) question
+		* discard question (refuse to answer)
+
+
+Administration:
+	- Primary user
+	- daily use
+	- computer experience: advanced beginner (Schooling)
+	- application familiarity: expert (Schooling and similarities with systems like Pointcarre)
+	- extent of task knowledge: High
+	- usage frequency: Limited, Once every semester or when problems arise
+	- Usage: Mandatory
+	- motivation:
+		* positive:
+		* negative:
+			1. Extra workload
+			2. Alternative already exists (email)
+	- number of users: 20
+	- tasks: 
+		* (un)link a professor with a course (can be automated e.g. Cali)
+		* (un)link a student with a course (can be automated e.g. Cali)
+
+Note:
+----
+A public question is visible for all students within a given course
+A private question is only visible for the student who asked it
