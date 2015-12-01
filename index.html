@@ -56,7 +56,6 @@
     }
     p {
       line-height:10%;
-
     }
     </style>
   </head>
@@ -85,7 +84,7 @@
             </label>
             <div class="mdl-textfield__expandable-holder">
               <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Geef een zoekterm...</label>
+              <label class="mdl-textfield__label" for="search">Provide a query...</label>
             </div>
           </div>
           <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
@@ -100,7 +99,7 @@
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-          <img src="images/user.jpg" class="demo-avatar">
+          <img id="avatar" src="images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
             <span id="loginName">hello@example.com</span>
             <div class="mdl-layout-spacer"></div>
@@ -114,7 +113,7 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">General </a>
+          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">General</a>
           <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">Dutch</a>
           <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">Math</a>
           <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">French</a>
@@ -152,6 +151,7 @@
     <script src="jquery-2.1.4.min.js"></script>
     <script src="material.min.js"></script>
     <script src="materialize.min.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
     <script>
       var questions = {
         "General": [{open:true, title:'What time does the library open?', contents: 'I want to study very early because i am a good student. Can I come in at 8 AM?', author:'good@student.be', followup:{title: "Yes!", contents: "The library is open from 7:30 AM, feel free to study from then!", author:"library@personel.be", followup:{title:"Thanks", contents: "Will sure do!", author: "good@student.be"}}}],
@@ -163,8 +163,9 @@
         "Geography": [],
       };
       var currentCourse = "General";
-      var addQuestion = function (course, icon, title, contents, author) {
-        questions[course].push({icon:icon, title:title, contents:contents, author:author});
+      var email = "";
+      var addQuestion = function (course, title, contents, author) {
+        questions[course].push({open:true, title:title, contents:contents, author:author});
       };
       var addFolowUp = function(course, idx, title, contents, author) {
         var rec = function self(obj) {
@@ -202,13 +203,15 @@
               return res;
             }
           };
-          console.log(obj);
           return lststr + questionhtml.replace(/TITLEPLACEHOLDER/g, obj.title)
                                       .replace(/CONTENTPLACEHOLDER/g, obj.contents)
                                       .replace(/ICONPLACEHOLDER/g, obj.open ? 'question_answer' : 'lock')
                                       .replace(/AUTHORPLACEHOLDER/g, obj.author)
                                       .replace(/FOLLOWUPPLACEHOLDER/g, followuprec(obj, "", 0));
         }, "");
+        if(list=="") {
+          list = "<br /><br /><center><h4>No Questions for this course yet!</h4>Ask one by pressing the button in the bottom right corner!</center>";
+        }
         $("#mainul").html(list);
       };
       var drawNewQuestion = function() {
@@ -218,14 +221,16 @@
           "<input class=\"mdl-textfield__input\" name=\"title\" type=\"text\" id=\"title\">" +
           "<label style=\"top:0;\" class=\"mdl-textfield__label\" for=\"title\">Title</label>" +
           "</div></div>" +
-          "<div class=\"\"><p>" +
-          "<div class=\"mdl-textfield mdl-js-textfield\">" +
-            "<textarea class=\"mdl-textfield__input\" type=\"text\" name=\"content\" rows=\"4\" id=\"content\" ></textarea>" +
+          "<div style=\"margin-left:20px;\" class=\"mdl-textfield mdl-js-textfield\">" +
+            "<textarea class=\"mdl-textfield__input\" type=\"text\" name=\"content\" rows=\"5\" id=\"content\" ></textarea>" +
             "<label class=\"mdl-textfield__label\" for=\"content\">Ask a question...</label>" +
-          "</div></p></div>" +
+          "</div>" +
+          "<p style=\"font-style:oblique;text-align:right;width:100%;padding-bottom:15px;padding-right:15px;\">" +
+          "<button onclick=\"addQuestionClick()\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent\">Ask!</button></p>" +
           "</li>";
          $("#mainul").prepend(questionhtml);
          componentHandler.upgradeAllRegistered();
+         $("#title").focus();
       }
       var switchCourse = function(course) {
         currentCourse = course;
@@ -233,9 +238,27 @@
         drawQuestions(currentCourse);
         return false;
       };
+      var addQuestionClick = function() {
+        // TODO checks
+        addQuestion(currentCourse, $("#title").val(), $("#content").val(), email);
+        drawQuestions(currentCourse);
+      };
+      var setEmail = function(lemail) {
+        email = lemail;
+        $("#loginName").html(email);
+        $("#avatar").prop('src', 'http://www.gravatar.com/avatar/' + CryptoJS.MD5(email));
+      };
       var checkLogin = function() {
-        
-      }
+        var isValidEmailAddress= function(emailAddress) {
+          var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+          return pattern.test(emailAddress);
+        }
+        var email = $("#email").val();
+        if(isValidEmailAddress(email)) {
+          $("#modal1").closeModal();
+        }
+        setEmail(email);
+      };
       var init = function () {
         $('#modal1').openModal({
           dismissible:false,
