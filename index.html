@@ -1,20 +1,4 @@
 <!doctype html>
-<!--
-  Material Design Lite
-  Copyright 2015 Google Inc. All rights reserved.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      https://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
--->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -70,9 +54,26 @@
         right:16px;
         z-index:901;
     }
+    p {
+      line-height:10%;
+
+    }
     </style>
   </head>
   <body>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Provide your email</h4>
+        <div class="input-field">
+          <input id="email" type="email" class="validate">
+          <label for="email" data-error="Incorrect email address" data-success="Correct">Email</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" onclick="checkLogin()" class="waves-effect waves-green btn-flat">Enter</a>
+      </div>
+    </div>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
@@ -113,43 +114,136 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <a class="mdl-navigation__link" href="">All </a>
-          <a class="mdl-navigation__link" href="">Math</a>
-          <a class="mdl-navigation__link" href="">Dutch</a>
-          <a class="mdl-navigation__link" href="">French</a>
-          <a class="mdl-navigation__link" href="">English</a>
-          <a class="mdl-navigation__link" href="">History</a>
-          <a class="mdl-navigation__link" href="">Geography</a>
+          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">General </a>
+          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">Dutch</a>
+          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">Math</a>
+          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">French</a>
+          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">English</a>
+          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">History</a>
+          <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">Geography</a>
           <div class="mdl-layout-spacer"></div>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
+      <button id="addButton" onclick="drawNewQuestion()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">add</i>
+      </button>
       <main class="mdl-layout__content mdl-color--grey-100">
-        <ul style="width:90%; margin:auto; margin-top:10px;" class="collapsible popout" data-collapsible="accordion">
+        <ul style="width:90%; margin:auto; margin-top:10px;" id="mainul" class="collapsible popout" data-collapsible="accordion">
           <li>
             <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
           </li>
           <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+            <div class="collapsible-header"><select>First</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
           </li>
           <li>
             <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            <div class="collapsible-body">
+              <p>Lorem ipsum dolor sit amet.</p>
+              <div class="collapsible-header"><i class="material-icons">reply</i></div>
+              <div><p>tester</p></div>
+            </div>
           </li>
         </ul>
       </main>
-      <button id="addButton" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-        <i class="material-icons">add</i>
-      </button>
-
     </div>
     <script src="jquery-2.1.4.min.js"></script>
     <script src="material.min.js"></script>
     <script src="materialize.min.js"></script>
     <script>
-
+      var questions = {
+        "General": [{open:true, title:'What time does the library open?', contents: 'I want to study very early because i am a good student. Can I come in at 8 AM?', author:'good@student.be', followup:{title: "Yes!", contents: "The library is open from 7:30 AM, feel free to study from then!", author:"library@personel.be", followup:{title:"Thanks", contents: "Will sure do!", author: "good@student.be"}}}],
+        "Math": [],
+        "English": [],
+        "French": [],
+        "Dutch": [],
+        "History": [],
+        "Geography": [],
+      };
+      var currentCourse = "General";
+      var addQuestion = function (course, icon, title, contents, author) {
+        questions[course].push({icon:icon, title:title, contents:contents, author:author});
+      };
+      var addFolowUp = function(course, idx, title, contents, author) {
+        var rec = function self(obj) {
+          if(obj["followup"]) {
+            return self(obj["followup"]);
+          } else {
+            obj["followup"] = {title:title, content:content, author:author};
+            return obj;
+          }
+        };
+        rec(questions[course][idx]);
+      };
+      var drawQuestions = function (course) {
+        var questionhtml = "<li>"+
+          "<div class=\"collapsible-header\"><i class=\"material-icons\">ICONPLACEHOLDER</i>TITLEPLACEHOLDER</div>" +
+          "<div class=\"collapsible-body\"><p>CONTENTPLACEHOLDER</p><p style=\"font-style:oblique;text-align:right;width:100%;\">AUTHORPLACEHOLDER</p>"+
+          "FOLLOWUPPLACEHOLDER</div>" +
+          "</li>";
+        var followuphtml = "<div class=\"collapsible-header\"><i class=\"material-icons\">reply</i></div>" +
+          "<div><p>CONTENTPLACEHOLDER</p><p style=\"margin:0px;font-style:oblique;text-align:right;width:100%;\">AUTHORPLACEHOLDER</p></div>";
+        var list = questions[course].reduce(function(lststr, obj, ig, nore) {
+          var followuprec = function(obj, res, i) {
+            if(i != 0) {
+              var str = followuphtml.replace(/TITLEPLACEHOLDER/g, obj.title)
+                                    .replace(/CONTENTPLACEHOLDER/g, obj.contents)
+                                    .replace(/AUTHORPLACEHOLDER/g, obj.author);
+            } else {
+              var str = "";
+            }
+            if(obj["followup"]) {
+              return followuprec(obj["followup"], res + str, i + 1);
+            } else if(i != 0) {
+              return res + str;
+            } else {
+              return res;
+            }
+          };
+          console.log(obj);
+          return lststr + questionhtml.replace(/TITLEPLACEHOLDER/g, obj.title)
+                                      .replace(/CONTENTPLACEHOLDER/g, obj.contents)
+                                      .replace(/ICONPLACEHOLDER/g, obj.open ? 'question_answer' : 'lock')
+                                      .replace(/AUTHORPLACEHOLDER/g, obj.author)
+                                      .replace(/FOLLOWUPPLACEHOLDER/g, followuprec(obj, "", 0));
+        }, "");
+        $("#mainul").html(list);
+      };
+      var drawNewQuestion = function() {
+        $("#questionForm").remove();
+        var questionhtml = "<li class=\"\" id=\"questionForm\">"+
+          "<div class=\"collapsible-header\"><i class='material-icons'>question_answer</i><div style=\"padding-top:0;padding-bottom:0;\" class=\"mdl-textfield mdl-js-textfield\">" +
+          "<input class=\"mdl-textfield__input\" name=\"title\" type=\"text\" id=\"title\">" +
+          "<label style=\"top:0;\" class=\"mdl-textfield__label\" for=\"title\">Title</label>" +
+          "</div></div>" +
+          "<div class=\"\"><p>" +
+          "<div class=\"mdl-textfield mdl-js-textfield\">" +
+            "<textarea class=\"mdl-textfield__input\" type=\"text\" name=\"content\" rows=\"4\" id=\"content\" ></textarea>" +
+            "<label class=\"mdl-textfield__label\" for=\"content\">Ask a question...</label>" +
+          "</div></p></div>" +
+          "</li>";
+         $("#mainul").prepend(questionhtml);
+         componentHandler.upgradeAllRegistered();
+      }
+      var switchCourse = function(course) {
+        currentCourse = course;
+        $("#mainul").html("");
+        drawQuestions(currentCourse);
+        return false;
+      };
+      var checkLogin = function() {
+        
+      }
+      var init = function () {
+        $('#modal1').openModal({
+          dismissible:false,
+          opacity:0.8
+        });
+        drawQuestions(currentCourse);
+      };
+      init();
     </script>
   </body>
 </html>
