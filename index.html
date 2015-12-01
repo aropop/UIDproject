@@ -157,8 +157,8 @@
         "General": [{open:true, title:'What time does the library open?', contents: 'I want to study very early because i am a good student. Can I come in at 8 AM?', author:'good@student.be', followup:{title: "Yes!", contents: "The library is open from 7:30 AM, feel free to study from then!", author:"library@personel.be", followup:{title:"Thanks", contents: "Will sure do!", author: "good@student.be"}}}],
         "Math": [],
         "English": [],
-        "French": [],
-        "Dutch": [],
+        "French": [{open:true, title:'Whats the translation of this text?', contents: 'Bonjour, je m\'appelle jaque. J\'étudie a le VUB.', author:'french@student.be'}],
+        "Dutch": [{open:false, title:'Is there still class?', contents: 'Because of the terror level in Brussels, I am wondering if class on monday is still on?', author:'good@student.be', followup:{title: "Yes!", contents: "Don't be afraid of terrorists!", author:"dutchteacher@personel.be"}}, {open:true, title:'Whats the translation of this text?', contents: 'Hallo, ik ben jaque en studeer op de VUB.', author:'dutch@student.be'}],
         "History": [],
         "Geography": [],
       };
@@ -184,7 +184,7 @@
           "<div class=\"collapsible-body\"><p>CONTENTPLACEHOLDER</p><p style=\"font-style:oblique;text-align:right;width:100%;\">AUTHORPLACEHOLDER</p>"+
           "FOLLOWUPPLACEHOLDER</div>" +
           "</li>";
-        var followuphtml = "<div class=\"collapsible-header\"><i class=\"material-icons\">reply</i></div>" +
+        var followuphtml = "<div class=\"collapsible-header\"><i class=\"material-icons\">reply</i>TITLEPLACEHOLDER</div>" +
           "<div><p>CONTENTPLACEHOLDER</p><p style=\"margin:0px;font-style:oblique;text-align:right;width:100%;\">AUTHORPLACEHOLDER</p></div>";
         var list = questions[course].reduce(function(lststr, obj, ig, nore) {
           var followuprec = function(obj, res, i) {
