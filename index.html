@@ -64,6 +64,15 @@
       margin-bottom: 40px;
       z-index: 900;
     }
+    #addButton {
+        position:fixed;
+        bottom:16px;
+        right:16px;
+        z-index:901;
+    }
+    .mdl-menu__item {
+      width: 60%;
+    }
     </style>
   </head>
   <body>
@@ -95,16 +104,14 @@
         <header class="demo-drawer-header">
           <img src="images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>hello@example.com</span>
+            <span id="loginName">hello@example.com</span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">Accounts</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">hello@example.com</li>
-              <li class="mdl-menu__item">info@example.com</li>
-              <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+              <li class="mdl-menu__item">View Profile</li>
+              <li class="mdl-menu__item">Logout</li>
             </ul>
           </div>
         </header>
@@ -121,7 +128,7 @@
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
-        <ul class="collapsible popout" data-collapsible="accordion">
+        <ul style="width:90%; margin:auto; margin-top:10px;" class="collapsible popout" data-collapsible="accordion">
           <li>
             <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
             <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
@@ -136,9 +143,16 @@
           </li>
         </ul>
       </main>
+      <button id="addButton" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">add</i>
+      </button>
+
     </div>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script>
+
+    </script>
   </body>
 </html>
