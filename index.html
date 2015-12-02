@@ -234,7 +234,7 @@
           "<div class=\"collapsible-header\"><i class='material-icons'>question_answer</i><div style=\"padding-top:0;padding-bottom:0;\" class=\"mdl-textfield mdl-js-textfield\">" +
           "<input class=\"mdl-textfield__input\" name=\"title\" type=\"text\" id=\"title\">" +
           "<label style=\"top:0;\" class=\"mdl-textfield__label\" for=\"title\">Title</label>" +
-          "</div></div>" +
+          "</div><div onclick=\"$('#questionForm').remove()\" style=\"float:right;padding-top:5px;\"><i class='material-icons'>close</i></div></div>" +
           "<div style=\"margin-left:20px;\" class=\"mdl-textfield mdl-js-textfield\">" +
             "<textarea class=\"mdl-textfield__input\" type=\"text\" name=\"content\" rows=\"5\" id=\"content\" ></textarea>" +
             "<label class=\"mdl-textfield__label\" for=\"content\">Ask a question...</label>" +
@@ -261,7 +261,7 @@
       var respond = function(idx){
         var title = $('input[name=title'+idx+']').val();
         var cont = $('textarea[name=content'+idx+']').val();
-        addFolowUp(currentCourse, idx, title, content, email);
+        addFolowUp(currentCourse, idx, title, cont, email);
         drawQuestions(currentCourse);
         expand(idx);
       };
