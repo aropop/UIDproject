@@ -27,9 +27,9 @@
     <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
-    <link href="icon.css" rel="stylesheet">
     <link rel="stylesheet" href="material.min.css">
     <link rel="stylesheet" href="styles.css">
 
@@ -165,7 +165,7 @@
       var currentCourse = "General";
       var email = "";
       var addQuestion = function (course, title, contents, author) {
-        questions[course].push({open:true, title:title, contents:contents, author:author});
+        questions[course].unshift({open:true, title:title, contents:contents, author:author});
       };
       var addFolowUp = function(course, idx, title, contents, author) {
         var rec = function self(obj) {
@@ -186,7 +186,7 @@
           "</li>";
         var followuphtml = "<div class=\"collapsible-header\"><i class=\"material-icons\">reply</i>TITLEPLACEHOLDER</div>" +
           "<div><p>CONTENTPLACEHOLDER</p><p style=\"margin:0px;font-style:oblique;text-align:right;width:100%;\">AUTHORPLACEHOLDER</p></div>";
-        var list = questions[course].reduce(function(lststr, obj, ig, nore) {
+        var list = questions[course].reduce(function(lststr, ogobj, ig, nore) {
           var followuprec = function(obj, res, i) {
             if(i != 0) {
               var str = followuphtml.replace(/TITLEPLACEHOLDER/g, obj.title)
@@ -195,24 +195,38 @@
             } else {
               var str = "";
             }
+            var response = "";
+            if(ogobj.open) {
+                response =  "<div class=\"collapsible-header\"><i class='material-icons'>question_answer</i><div style=\"padding-top:0;padding-bottom:0;\" class=\"mdl-textfield mdl-js-textfield\">" +
+                      "<input class=\"mdl-textfield__input\" name=\"title"+ig+"\" type=\"text\" id=\"title\">" +
+                      "<label style=\"top:0;\" class=\"mdl-textfield__label\" for=\"title\">Response Title</label>" +
+                        "</div></div>" +
+                       "<div style=\"margin-left:20px;\" class=\"mdl-textfield mdl-js-textfield\">" +
+                          "<textarea class=\"mdl-textfield__input\" type=\"text\" name=\"content"+ig+"\" rows=\"5\" id=\"content\" ></textarea>" +
+                          "<label class=\"mdl-textfield__label\" for=\"content\">Write a response...</label>" +
+                        "</div>" +
+                        "<p style=\"font-style:oblique;text-align:right;width:100%;padding-bottom:15px;padding-right:15px;\">" +
+                        "<button onclick=\"respond("+ig+")\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent\">Respond!</button></p>";
+            }
             if(obj["followup"]) {
               return followuprec(obj["followup"], res + str, i + 1);
             } else if(i != 0) {
-              return res + str;
+              return res + str + response;
             } else {
-              return res;
+              return res + response;
             }
           };
-          return lststr + questionhtml.replace(/TITLEPLACEHOLDER/g, obj.title)
-                                      .replace(/CONTENTPLACEHOLDER/g, obj.contents)
-                                      .replace(/ICONPLACEHOLDER/g, obj.open ? 'question_answer' : 'lock')
-                                      .replace(/AUTHORPLACEHOLDER/g, obj.author)
-                                      .replace(/FOLLOWUPPLACEHOLDER/g, followuprec(obj, "", 0));
+          return lststr + questionhtml.replace(/TITLEPLACEHOLDER/g, ogobj.title)
+                                      .replace(/CONTENTPLACEHOLDER/g, ogobj.contents)
+                                      .replace(/ICONPLACEHOLDER/g, ogobj.open ? 'question_answer' : 'lock')
+                                      .replace(/AUTHORPLACEHOLDER/g, ogobj.author)
+                                      .replace(/FOLLOWUPPLACEHOLDER/g, followuprec(ogobj, "", 0));
         }, "");
         if(list=="") {
           list = "<br /><br /><center><h4>No Questions for this course yet!</h4>Ask one by pressing the button in the bottom right corner!</center>";
         }
         $("#mainul").html(list);
+        componentHandler.upgradeAllRegistered();
       };
       var drawNewQuestion = function() {
         $("#questionForm").remove();
@@ -231,6 +245,7 @@
          $("#mainul").prepend(questionhtml);
          componentHandler.upgradeAllRegistered();
          $("#title").focus();
+         expand(0);
       }
       var switchCourse = function(course) {
         currentCourse = course;
@@ -243,6 +258,16 @@
         addQuestion(currentCourse, $("#title").val(), $("#content").val(), email);
         drawQuestions(currentCourse);
       };
+      var respond = function(idx){
+        var title = $('input[name=title'+idx+']').val();
+        var cont = $('textarea[name=content'+idx+']').val();
+        addFolowUp(currentCourse, idx, title, content, email);
+        drawQuestions(currentCourse);
+        expand(idx);
+      };
+      var expand = function(idx) {
+        $('.collapsible-header').eq(idx).trigger('click');
+      }
       var setEmail = function(lemail) {
         email = lemail;
         $("#loginName").html(email);
