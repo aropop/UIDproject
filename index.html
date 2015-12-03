@@ -81,7 +81,7 @@
             </label>
             <div class="mdl-textfield__expandable-holder">
               <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Provide a query...</label>
+              <label style="top:16px;" class="mdl-textfield__label" for="search">Provide a query...</label>
             </div>
           </div>
           <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
@@ -184,7 +184,41 @@
         };
         rec(questions[course][idx]);
       };
-      var drawQuestions = function (course) {
+      var drawQuestions = function (course, highlight) {
+        if (highlight === undefined) {
+          highlight = "";
+        }
+        var search;
+        if(highlight == "") {
+          search = function(arr) { return arr; };
+        }else {
+          search = function(arr) {
+            var rec = function recer(obj) {
+              var res = false;
+              if(obj.title.search(highlight) != -1) {
+                obj.title = obj.title.replace(new RegExp(highlight,"g"), "<span style='background-color:yellow;'>" + highlight + "</span>");
+                res = true;
+              }
+              if(obj.contents.search(highlight) != -1) {
+                obj.contents = obj.contents.replace(new RegExp(highlight,"g"), "<span style='background-color:yellow;'>" + highlight + "</span>");
+                res = true;
+              }
+              if(obj.author.search(highlight) != -1) {
+                obj.author = obj.author.replace(new RegExp(highlight,"g"), "<span style='background-color:yellow;'>" + highlight + "</span>");
+                res = true;
+              }
+              if(obj["followup"]) {
+                var recres = recer(obj["followup"]);
+                return [recres[0] || res, obj];
+              }
+              return [res, obj];
+            };
+            arr = arr.map(function(obj) { var copy = $.extend(true, {}, obj); return rec(copy)});
+            console.log(arr);
+            var arr = arr.filter(function(val) { return val[0];});
+            return arr.map(function(val) { return val[1];});
+          };
+        }
         var questionhtml = "<li>"+
           "<div class=\"collapsible-header\"><i id=\"questionIDPLACEHOLDERicon\" class=\"material-icons\">ICONPLACEHOLDER</i>TITLEPLACEHOLDER</div>" +
           "<div class=\"mdl-tooltip\" for=\"questionIDPLACEHOLDERicon\">" +
@@ -195,7 +229,8 @@
           "</li>";
         var followuphtml = "<div class=\"collapsible-header\"><i class=\"material-icons\">reply</i>TITLEPLACEHOLDER</div>" +
           "<div><p>CONTENTPLACEHOLDER</p><p style=\"margin:0px;font-style:oblique;text-align:right;width:100%;\">AUTHORPLACEHOLDER</p></div>";
-        var list = questions[course].reduce(function(lststr, ogobj, ig, nore) {
+        search(questions[course]);
+        var list = search(questions[course]).reduce(function(lststr, ogobj, ig, nore) {
           var followuprec = function(obj, res, i) {
             if(i != 0) {
               var str = followuphtml.replace(/TITLEPLACEHOLDER/g, obj.title)
@@ -238,8 +273,10 @@
             return lststr;
           }
         }, "");
-        if(list=="") {
+        if(list=="" && highlight=="") {
           list = "<br /><br /><center><h4>No Questions for this course yet!</h4>Ask one by pressing the button in the bottom right corner!</center>";
+        } else if(list=="") {
+          list = "<br /><br /><center><h4>No Questions for the current search query!</h4>Ask one by pressing the button in the bottom right corner!</center>";
         }
         $("#mainul").html(list);
         componentHandler.upgradeAllRegistered();
@@ -302,7 +339,6 @@
       var respond = function(idx){
         var title = $('input[name=title'+idx+']').val();
         var cont = $('textarea[name=content'+idx+']').val();
-        console.log(cont);
         addFolowUp(currentCourse, idx, title, cont, email);
         drawQuestions(currentCourse);
         expand(idx);
@@ -342,6 +378,20 @@
             if (e.keyCode == 13) {
                checkLogin();
             }
+        });
+        var focusfix = false;
+        $("#search").keyup(function (e) {
+            if (e.keyCode == 13) {
+               drawQuestions(currentCourse, $("#search").val());
+               focusfix=true;
+            }
+        });
+        $("#search").focusout(function (e) {
+          if(focusfix) {
+            focusfix = false;
+          } else {
+               drawQuestions(currentCourse, $("#search").val());
+             }
         });
       };
       init();
