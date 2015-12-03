@@ -214,7 +214,6 @@
               return [res, obj];
             };
             arr = arr.map(function(obj) { var copy = $.extend(true, {}, obj); return rec(copy)});
-            console.log(arr);
             var arr = arr.filter(function(val) { return val[0];});
             return arr.map(function(val) { return val[1];});
           };
@@ -262,7 +261,7 @@
           };
           if(auth(ig, currentCourse)) {
             // Zoveel lelijke code :(
-            return lststr + questionhtml.replace(/TITLEPLACEHOLDER/g, ogobj.title + (adminauth(ig, currentCourse) ? "<i style=\"float:right\" onclick=\"toggleopen("+ig+");expand("+ig+");\" id=\"azr"+ig+"\" class='material-icons'>" + (ogobj.open? 'lock' : 'lock_open') + "</i><div class=\"mdl-tooltip\" for=\"azr"+ig+"\">" + (ogobj.open ? 'Close this question' : 'Open this question') + "</div>" : ""))
+            return lststr + questionhtml.replace(/TITLEPLACEHOLDER/g, ogobj.title + (adminauth(ig, currentCourse) ? "<i style=\"float:right\" onclick=\"toggleopen("+ig+");expand("+ig+");\" id=\"azr"+ig+"\" class='material-icons'>" + (ogobj.open? 'lock' : 'lock_open') + "</i><div class=\"mdl-tooltip\" for=\"azr"+ig+"\">" + (ogobj.open ? 'Close this question' : 'Open this question') + "</div>" + "<i style=\"float:right\" onclick=\"toggleprivate("+ig+");expand("+ig+");\" id=\"azrr"+ig+"\" class='material-icons'>" + (ogobj.private? 'people' : 'person') + "</i><div class=\"mdl-tooltip\" for=\"azrr"+ig+"\">" + (ogobj.private ? 'Make this question public' : 'Make this question private') + "</div>" : ""))
                                         .replace(/CONTENTPLACEHOLDER/g, ogobj.contents)
                                         .replace(/ICONPLACEHOLDER/g, ogobj.open ? (ogobj.private ? 'lock_open' : 'question_answer'): 'lock')
                                         .replace(/IDPLACEHOLDER/g, ig)
@@ -318,10 +317,14 @@
         return (email.toLowerCase().search("@student.be") != -1) || adminauth(qidx, course);
       };
       var adminauth = function(qidx, course) {
-        return authAr[course].reduce(function(prev, cur) {return prev || -1 != email.toLowerCase().search(cur)}, false);
+        return authAr[course].reduce(function(prev, cur) {return prev || -1 != email.toLowerCase().search(cur)}, false) || questions[course][qidx].author == email;
       };
       var toggleopen = function(qid) {
         questions[currentCourse][qid].open = !questions[currentCourse][qid].open;
+        drawQuestions(currentCourse);
+      };
+      var toggleprivate = function(qid) {
+        questions[currentCourse][qid].private = !questions[currentCourse][qid].private;
         drawQuestions(currentCourse);
       };
       var switchCourse = function(course) {
