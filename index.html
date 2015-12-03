@@ -54,9 +54,6 @@
         right:16px;
         z-index:901;
     }
-    p {
-      line-height:10%;
-    }
     </style>
   </head>
   <body>
@@ -208,7 +205,7 @@
               var str = "";
             }
             var response = "";
-            if(ogobj.open && auth(ig, course)) {
+            if(ogobj.open && stauth(ig, course)) {
                 response =  "<div class=\"collapsible-header\"><i class='material-icons'>question_answer</i><div style=\"padding-top:0;padding-bottom:0;\" class=\"mdl-textfield mdl-js-textfield\">" +
                       "<input class=\"mdl-textfield__input\" name=\"title"+ig+"\" type=\"text\" id=\"title\">" +
                       "<label style=\"top:0;\" class=\"mdl-textfield__label\" for=\"title\">Response Title</label>" +
@@ -279,6 +276,9 @@
         return ! questions[course][qidx].private
         || (questions[course][qidx].author == email)
         || (questions[course][qidx].private && authAr[course].reduce(function(prev, cur) {return prev || -1 != email.toLowerCase().search(cur)}, false));
+      };
+      var stauth = function(qidx, course) {
+        return (email.toLowerCase().search("@student.be") != -1) || adminauth(qidx, course);
       };
       var adminauth = function(qidx, course) {
         return authAr[course].reduce(function(prev, cur) {return prev || -1 != email.toLowerCase().search(cur)}, false);
