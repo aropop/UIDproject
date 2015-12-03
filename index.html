@@ -178,7 +178,7 @@
           if(obj["followup"]) {
             return self(obj["followup"]);
           } else {
-            obj["followup"] = {title:title, content:content, author:author};
+            obj["followup"] = {title:title, contents:contents, author:author};
             return obj;
           }
         };
@@ -302,6 +302,7 @@
       var respond = function(idx){
         var title = $('input[name=title'+idx+']').val();
         var cont = $('textarea[name=content'+idx+']').val();
+        console.log(cont);
         addFolowUp(currentCourse, idx, title, cont, email);
         drawQuestions(currentCourse);
         expand(idx);
