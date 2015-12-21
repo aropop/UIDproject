@@ -1,4 +1,7 @@
 \documentclass[10pt]{report}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
 
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\thesection.\arabic{subsection}}
@@ -110,10 +113,11 @@ The application is based on 2 existing user classes. It contains students who ar
 \section{CTT}
 
 \section{Style Guide}
+\input{designguidelines.tex}
 
 \section{Design Report}
 
-\section{evaluation report}
-
+\section{Evaluation report}
+\input{evaluationreport.tex}
 
 \end{document}
