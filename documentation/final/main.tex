@@ -3,7 +3,27 @@
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\thesection.\arabic{subsection}}
 
+\newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+\hbox{ % Horizontal box
+%\hspace*{0.01\textwidth} % Whitespace to the left of the title page
+\rule{1pt}{\textheight} % Vertical line
+\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+
+{\noindent\Huge\bfseries User Interface \\Design}\\[2\baselineskip] % Title
+{\large \textit{Final submission}}\\[4\baselineskip] % Tagline or further description
+{\Large \textsc{Arno De Witte}}\\
+{\Large \textsc{Kwinten Pardon}}
+
+\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+}}
+\thispagestyle{empty}
+\endgroup}
+
 \begin{document}
+
+\titleGM
+\clearpage\setcounter{page}{1}
 
 \section{Application Description}
 Our application eliminates the search for contact information for the professor in charge of a certain course. It enables the student to ask a question, related to a course he follows, in a fast and straightforward manner. The application will also list the questions asked by his fellow students and the given answers. This way, a knowledge base
