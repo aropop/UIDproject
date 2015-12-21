@@ -13,7 +13,7 @@ Students:
 			1. eliminates the search for contact information
 	- number of users: 12.000+
 	- tasks: 
-		* Watch overciew of courses (number of new questions / answers per course)
+		* Watch overciew of courses (number of new questions / new answers per course)
 		* Watch overview of questions statust per course (answered, follow-up question unanswered, unanswered)
 		* Ask a question regarding a course (public or private)
 		* Mark a question as answered (only if he is the original person who asked the question)
