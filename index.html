@@ -374,7 +374,7 @@
           "</div>" +
           "<div style=\"width:100%\">"+
           "<label style=\"margin-left:21px;width:80px;\" id=\"tooltiplabel\" class=\"mdl-switch mdl-js-switch mdl-js-ripple-effect\" for=\"switch-1\">" +
-            "<input type=\"checkbox\" id=\"switch-1\" class=\"mdl-switch__input\" checked>" +
+            "<input onclick=\"$(this).change(function(e) { $(e.target).next().html($(e.target).prop('checked') ? 'Private' : 'Public')})\" type=\"checkbox\" id=\"switch-1\" class=\"mdl-switch__input\" checked>" +
             "<span class=\"mdl-switch__label\">Private</span>" +
           "</label>" +
           "</div>" +
@@ -446,6 +446,9 @@
           return pattern.test(emailAddress);
         }
         var email = $("#email").val();
+        if(email.length == 0) {
+            alert("Please enter an email adress");
+        }
         if(isValidEmailAddress(email)) {
           setEmail(email);
           $("#modal1").closeModal();
