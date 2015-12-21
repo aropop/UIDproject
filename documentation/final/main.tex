@@ -32,11 +32,13 @@
 \clearpage\setcounter{page}{1}
 
 \section{Application Description}
-The application focusses on students and professor at the university. They are able to log in into the application using their university credentials. Students are able to navigate through the courses they are registered for. Per course a student is able to see the questions asked by his fellow students and he's able to ask question of his own. A professor sees the courses he is responsible for. Per course the professor sees the questions asked by his students and is able to answer them. Due to these interactions, a knowledge base per course is formed.
+The application focuses on students and professors at the university. This application allows for them to ask questions and give responses. They are able to log in into the application using their university credentials. Students are able to navigate through the courses they are registered for. Per course a student is able to see the questions asked by his fellow students and he's able to ask question of his own. A professor sees the courses he is responsible for. Per course the professor sees the questions asked by his students and is able to answer them. Due to these interactions, a knowledge base per course is formed. Professors can choose to close questions if they find that they are sufficiently answered. Because some questions might be irrelevant for other students, the student may choose to make a question private so that only the professor can see the question.
 
-The prototype of our application can be found on http://aropop.github.io/UIDproject/
+\section{Prototype}
+A prototype has been developed as a web application. This choose was made as it seemed the most relevant for an actual working product. The prototype of our application can be found attached to this document. There is also a live version which can be found on \url{http://aropop.github.io/UIDproject/}. Note that the functionality of this prototype is written in JavaScript. Which means that when closing and reopening the page, all user data will be erased.\\
+To use the application as a student (see section \ref{sec:Users}) the user should login using \emph{bad@student.be} or \emph{good@student.be}. Logging in as \emph{mathteacher@personel.be} will allow you to be the professor for the math course in the prototype.
 
-\section{Users}
+\section{Users}\label{sec:Users}
 The application is based on 2 existing user classes. It contains students who are taking courses on the one hand and professors in charge of said courses on the other. The application does not require a super user since the application is based in a university environment and all data should be imported from other already existing databases or applications.
 
 \subsection{User Classes}
