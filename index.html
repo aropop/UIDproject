@@ -32,9 +32,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
     <link rel="stylesheet" href="material.min.css">
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="css/overlay.css">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="css/materialize.css">
+
+  <script src="modernizr.custom.js"></script>
 
   <!-- Compiled and minified JavaScript -->
 
@@ -69,6 +71,82 @@
       <div class="modal-footer">
         <a id="loginer" href="#!" onclick="checkLogin()" class="waves-effect waves-green btn-flat">Enter</a>
       </div>
+    </div>
+    <!-- overlay -->
+    <div id="tst" class="overlay overlay-corner">
+            <button style="padding-left:0px;" type="button" class="overlay-close">Close Help Overlay<i class="material-icons">close</i></button>
+            <div style="margin-top:30px;text-align:left;width:20%;color:white;font-size:80%;position:absolute;top:35%;left:50%">
+                <h4>Icon overview</h4>
+                <p><i class="material-icons">lock_open</i> Question is private, but still open to answer</p>
+                <p><i class="material-icons">question_answer</i> Question is public and open to answer</p>
+                <p><i class="material-icons">lock</i> Question is closed</p>
+            </div>
+            <div style="color:white;position:fixed; bottom:10px; right:55px">
+                <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <marker style="color:white;" id="Triangle" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto" fill="white">
+                            <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                	    </marker>
+                    </defs>
+                    <text x="0" y="35" style="font-size:15;" fill="white">Add A Question</text>
+                    <polyline points="10,50 10,80 90,80" fill="none" stroke="white" stroke-width="2" marker-end="url(#Triangle)"></polyline>
+                </svg>
+            </div>
+            <div style="color:white;position:fixed; top:20px; right:80px">
+                <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <marker style="color:white;" id="Triangle" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto" fill="white">
+                            <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                	    </marker>
+                    </defs>
+                    <text x="0" y="110" style="font-size:15;" fill="white">Search questions</text>
+                    <polyline points="10,95 10,20 90,20" fill="none" stroke="white" stroke-width="2" marker-end="url(#Triangle)"></polyline>
+                </svg>
+            </div>
+            <div style="color:white;position:fixed; top:20px; left:350px">
+                <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <marker style="color:white;" id="Triangle" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto" fill="white">
+                            <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                	    </marker>
+                    </defs>
+                    <text x="22" y="60" style="font-size:15;" fill="white">Current course</text>
+                    <polyline points="80,40 80,10 15,10" fill="none" stroke="white" stroke-width="2" marker-end="url(#Triangle)"></polyline>
+                </svg>
+            </div>
+            <div style="color:white;position:fixed; top:200px; left:250px">
+                <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <marker style="color:white;" id="Triangle" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto" fill="white">
+                            <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                	    </marker>
+                    </defs>
+                    <text x="22" y="60" style="font-size:15;" fill="white">All courses</text>
+                    <polyline points="80,40 80,10 15,10" fill="none" stroke="white" stroke-width="2" marker-end="url(#Triangle)"></polyline>
+                </svg>
+            </div>
+            <div style="color:white;position:fixed; bottom:10px; left:150px">
+                <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <marker style="color:white;" id="Triangle" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto" fill="white">
+                            <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                	    </marker>
+                    </defs>
+                    <text x="22" y="20" style="font-size:15;" fill="white">Help Button</text>
+                    <polyline points="80,50 80,110 10,110" fill="none" stroke="white" stroke-width="2" marker-end="url(#Triangle)"></polyline>
+                </svg>
+            </div>
+            <div style="color:white;position:fixed; top:0px; right:45px">
+                <svg width="120" height="220" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <marker style="color:white;" id="Triangle" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto" fill="white">
+                            <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                        </marker>
+                    </defs>
+                    <text x="0" y="110" style="font-size:12;" fill="white">Menu (logout, contact)</text>
+                    <polyline points="110,95 110,10" fill="none" stroke="white" stroke-width="2" marker-end="url(#Triangle)"></polyline>
+                </svg>
+            </div>
     </div>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
@@ -118,7 +196,7 @@
           <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">History</a>
           <a onclick="switchCourse(this.innerHTML);" class="mdl-navigation__link" href="#">Geography</a>
           <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+          <a class="mdl-navigation__link" id="trigger-overlay" href="#"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
       <button id="addButton" onclick="drawNewQuestion()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
@@ -145,6 +223,9 @@
         </ul>
       </main>
     </div>
+
+    <script src="classie.js"></script>
+    <script src="demo1.js"></script>
     <script src="jquery-2.1.4.min.js"></script>
     <script src="material.min.js"></script>
     <script src="materialize.min.js"></script>
