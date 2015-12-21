@@ -34,6 +34,6 @@
 			classie.add( overlay, 'open' );
 		}
 	}
-	triggerBttn.addEventListener( 'click', toggleOverlay );
+	$(triggerBttn).click( toggleOverlay );
 	closeBttn.addEventListener( 'click', toggleOverlay );
 })();
