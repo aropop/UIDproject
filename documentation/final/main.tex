@@ -30,8 +30,7 @@
 \clearpage\setcounter{page}{1}
 
 \section{Application Description}
-Our application eliminates the search for contact information for the professor in charge of a certain course. It enables the student to ask a question, related to a course he follows, in a fast and straightforward manner. The application will also list the questions asked by his fellow students and the given answers. This way, a knowledge base
-per course is formed.
+Our application focusses on students and professor at the university. They are able to log in into the application using their university credentials. Students are able to navigate through the courses they are registered for. Per course a student is able to see the questions asked by his fellow students and he's able to ask question of his own. A professor sees the courses he is responsible for. Per course the professor sees the questions asked by his students and is able to answer them. Due to these interactions, a knowledge base per course is formed.
 
 \section{Users}
 The application is based on 2 existing user classes. It contains students who are taking courses on the one hand and professors in charge of said courses on the other. The application does not require a super user since the application is based in a university environment and all data should be imported from other already existing databases or applications.
@@ -103,6 +102,21 @@ The application is based on 2 existing user classes. It contains students who ar
 \begin{center}
 	\includegraphics[scale=1]{img/orm.png}
 \end{center}
+
+\begin{itemize}
+\item User has 2 subclasses, one for each user type
+\item A student follows multiple courses
+\item A student asks multiple questions
+\item A professor answers multiple questions
+\item A professor is in charge of multiple courses
+\item A course is followed by multiple students
+\item A course contains multiple questions
+\item A course has multiple responsible professors
+\item A question is related to a single course
+\item A question can be asked by only 1 student
+\item A question can be answered by only 1 professor
+
+\end{itemize}
 
 \subsection{Usability Requirements}
 \begin{itemize}
