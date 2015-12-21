@@ -227,9 +227,9 @@
       </main>
     </div>
 
+    <script src="jquery-2.1.4.min.js"></script>
     <script src="classie.js"></script>
     <script src="demo1.js"></script>
-    <script src="jquery-2.1.4.min.js"></script>
     <script src="material.min.js"></script>
     <script src="materialize.min.js"></script>
     <script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
@@ -256,6 +256,7 @@
       var email = "";
       var addQuestion = function (course, title, contents, author, private) {
         questions[course].unshift({open:true, private:private, title:title, contents:contents, author:author});
+        sessionStorage.questions = JSON.stringify(questions);
       };
       var addFolowUp = function(course, idx, title, contents, author) {
         var rec = function self(obj) {
@@ -405,10 +406,12 @@
       };
       var toggleopen = function(qid) {
         questions[currentCourse][qid].open = !questions[currentCourse][qid].open;
+        sessionStorage.questions = JSON.stringify(questions);
         drawQuestions(currentCourse);
       };
       var toggleprivate = function(qid) {
         questions[currentCourse][qid].private = !questions[currentCourse][qid].private;
+        sessionStorage.questions = JSON.stringify(questions);
         drawQuestions(currentCourse);
       };
       var switchCourse = function(course) {
@@ -437,11 +440,14 @@
         email = lemail;
         $("#loginName").html(email);
         $("#avatar").prop('src', 'http://www.gravatar.com/avatar/' + CryptoJS.MD5(email));
+        sessionStorage.email = email;
+        sessionStorage.questions = JSON.stringify(questions);
       };
       var closeQuestion = function(qid) {
         questions[currentCourse][qid].open = false;
         drawQuestions(currentCourse);
         expand(qid);
+        sessionStorage.questions = JSON.stringify(questions);
       };
       var checkLogin = function() {
         var isValidEmailAddress= function(emailAddress) {
@@ -456,13 +462,19 @@
           setEmail(email);
           $("#modal1").closeModal();
           drawQuestions(currentCourse);
+          $("#trigger-overlay").trigger('click');
         }
       };
       var init = function () {
-        $('#modal1').openModal({
-          dismissible:false,
-          opacity:0.8
-        });
+          if(!sessionStorage.email) {
+            $('#modal1').openModal({
+              dismissible:false,
+              opacity:0.8
+            });
+        } else {
+            email = sessionStorage.email;
+            questions = JSON.parse(sessionStorage.questions);
+        }
         drawQuestions(currentCourse);
         $("#email").keyup(function (e) {
             if (e.keyCode == 13) {
