@@ -1,5 +1,7 @@
 \documentclass[10pt]{report}
+\usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{float}
 \usepackage[english]{babel}
 
 
@@ -44,7 +46,7 @@ The application is based on 2 existing user classes. It contains students who ar
 \textbf{Type} & Primary User \\ \hline
 \textbf{Usage frequenty} & Daily Use \\ \hline
 \textbf{Computer experience} & Novice \\ \hline
-\textbf{Application familiarity} & From novice as first degree bachelor student to competent performer in second degree master student. Application shows familiarities with other applications such as Pointcarre\\ \hline
+\textbf{Application familiarity} & From novice as first degree bachelor student to competent performer in second degree master student. Application shows familiarity's with other applications such as Pointcarre\\ \hline
 \textbf{Usage} & discretionary\\ \hline
 \textbf{Number of users} & 12.000+\\ \hline
 \textbf{Motivation} & 
@@ -57,7 +59,7 @@ The application is based on 2 existing user classes. It contains students who ar
 \textbf{tasks} & 
 	\begin{itemize}
 		\item Watch overview of courses (number of new questions / new answers per course)
-		\item Watch overview of questions statust per course (answered, follow-up question unanswered, unanswered)
+		\item Watch overview of questions status per course (answered, follow-up question unanswered, unanswered)
 		\item Ask a question regarding a course (public or private)
 		\item Mark a question as answered (only if he is the original person who asked the question)
 		\item Ask follow-up question
@@ -108,17 +110,17 @@ The application is based on 2 existing user classes. It contains students who ar
 	\item Users should be able to find a question within 10 seconds. (only if they're already in the right course. If not time required to navigate to the right course should be included making it 40 seconds)
 	\item Users should be able to change the status of a question instantly, provided the question already has been found.
 	\item Users should be able to change the visibility of a question instantly, provided the question already has been found.
-	\item Users should be able to log out within 5 seconds.
 \end{itemize}
 
 \section{CTT}
+\input{ctt.tex}
 
 \section{Style Guide}
 \input{designguidelines.tex}
 
 \section{Design Report}
 
-\section{Evaluation Report}
+\section{Evaluation report}
 \input{evaluationreport.tex}
 
 \end{document}
