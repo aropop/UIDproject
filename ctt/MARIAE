@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<interface xmlns="http://giove.isti.cnr.it" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns3="uri:xs" xmlns:ns4="http://schemas.xmlsoap.org/wsdl/" type="aui" schema-version="1.5.5">
+    <external_functions/>
+    <data>
+        <xs:schema finalDefault="" blockDefault="" elementFormDefault="unqualified" attributeFormDefault="unqualified"/>
+    </data>
+    <presentation name="Show_login_form_presentation">
+        <connections>
+            <elementary_conn interactor_id="P1_Go_to_Select_question_presentation" presentation_name="Select_question_presentation" external="false" anchor="false"/>
+        </connections>
+        <grouping hierarchy="false" ordering="false" continuous_update="false" id="P1_Question_tool" hidden="false">
+            <text_edit id="P1_Enter_email" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            <navigator id="P1_Go_to_Select_question_presentation" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+        </grouping>
+    </presentation>
+    <presentation name="Select_question_presentation">
+        <connections>
+            <elementary_conn interactor_id="P6_Go_to_Read_question_title_presentation" presentation_name="Read_question_title_presentation" external="false" anchor="false"/>
+            <elementary_conn interactor_id="P6_Go_to_Enter_question_title_presentation" presentation_name="Enter_question_title_presentation" external="false" anchor="false"/>
+        </connections>
+        <grouping hierarchy="false" ordering="false" continuous_update="false" id="P6_Question_tool" hidden="false">
+            <grouping hierarchy="false" ordering="false" continuous_update="false" id="P6_Interact_question" hidden="false">
+                <text_edit id="P6_Select_question" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <navigator id="P6_Go_to_Read_question_title_presentation" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            </grouping>
+            <grouping hierarchy="false" ordering="false" continuous_update="false" id="P6_Toggle_question_setting" hidden="false">
+                <text_edit id="P6_Click_toggle_open_setting" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <text_edit id="P6_Click_toggle_privacy_setting" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            </grouping>
+            <grouping hierarchy="false" ordering="false" continuous_update="false" id="P6_Ask_a_question" hidden="false">
+                <navigator id="P6_Go_to_Enter_question_title_presentation" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            </grouping>
+            <text_edit id="P6_Click_help" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            <text_edit id="P6_Quit" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+        </grouping>
+    </presentation>
+    <presentation name="Read_question_title_presentation">
+        <connections>
+            <elementary_conn interactor_id="P7_Go_to_Click_help_presentation" presentation_name="Click_help_presentation" external="false" anchor="false"/>
+            <elementary_conn interactor_id="P7_Go_to_Enter_respond_title_presentation" presentation_name="Enter_respond_title_presentation" external="false" anchor="false"/>
+        </connections>
+        <grouping hierarchy="false" ordering="false" continuous_update="false" id="P7_Question_tool" hidden="false">
+            <grouping hierarchy="false" ordering="false" continuous_update="false" id="P7_[Respond]" hidden="false">
+                <navigator id="P7_Go_to_Click_help_presentation" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <navigator id="P7_Go_to_Enter_respond_title_presentation" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            </grouping>
+            <text_edit id="P7_Click_help" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            <text_edit id="P7_Quit" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+        </grouping>
+    </presentation>
+    <presentation name="Click_help_presentation">
+        <grouping hierarchy="false" ordering="false" continuous_update="false" id="P8_Question_tool" hidden="false">
+            <text_edit id="P8_Click_help" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            <text_edit id="P8_Quit" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+        </grouping>
+    </presentation>
+    <presentation name="Enter_respond_title_presentation">
+        <connections>
+            <elementary_conn interactor_id="P9_Go_to_Click_help_presentation" presentation_name="Click_help_presentation" external="false" anchor="false"/>
+        </connections>
+        <grouping hierarchy="false" ordering="false" continuous_update="false" id="P9_Question_tool" hidden="false">
+            <grouping hierarchy="false" ordering="false" continuous_update="false" id="P9_Make_response" hidden="false">
+                <text_edit id="P9_Enter_respond_title" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <text_edit id="P9_Enter_respond_description" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <grouping hierarchy="false" ordering="false" continuous_update="false" id="P9_Validate_response" hidden="false"/>
+                <navigator id="P9_Go_to_Click_help_presentation" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            </grouping>
+            <text_edit id="P9_Click_help" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            <text_edit id="P9_Quit" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+        </grouping>
+    </presentation>
+    <presentation name="Click_help_presentation">
+        <grouping hierarchy="false" ordering="false" continuous_update="false" id="P10_Question_tool" hidden="false">
+            <text_edit id="P10_Click_help" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            <text_edit id="P10_Quit" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+        </grouping>
+    </presentation>
+    <presentation name="Enter_question_title_presentation">
+        <connections>
+            <elementary_conn interactor_id="P11_Go_to_Click_help_presentation" presentation_name="Click_help_presentation" external="false" anchor="false"/>
+        </connections>
+        <grouping hierarchy="false" ordering="false" continuous_update="false" id="P11_Question_tool" hidden="false">
+            <grouping hierarchy="false" ordering="false" continuous_update="false" id="P11_Enter_info" hidden="false">
+                <text_edit id="P11_Enter_question_title" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <text_edit id="P11_Enter_question_description" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <text_edit id="P11_Enter_privacy_setting" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <text_edit id="P11_Submit" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+                <navigator id="P11_Go_to_Click_help_presentation" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            </grouping>
+            <text_edit id="P11_Click_help" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            <text_edit id="P11_Quit" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+        </grouping>
+    </presentation>
+    <presentation name="Click_help_presentation">
+        <grouping hierarchy="false" ordering="false" continuous_update="false" id="P12_Question_tool" hidden="false">
+            <text_edit id="P12_Click_help" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+            <text_edit id="P12_Quit" enabled="true" focus="false" hidden="false" continuous_update="false"/>
+        </grouping>
+    </presentation>
+</interface>
