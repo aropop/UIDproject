@@ -256,7 +256,7 @@
       var email = "";
       var addQuestion = function (course, title, contents, author, private) {
         questions[course].unshift({open:true, private:private, title:title, contents:contents, author:author});
-        sessionStorage.questions = JSON.stringify(questions);
+        localStorage.questions = JSON.stringify(questions);
       };
       var addFolowUp = function(course, idx, title, contents, author) {
         var rec = function self(obj) {
@@ -406,12 +406,12 @@
       };
       var toggleopen = function(qid) {
         questions[currentCourse][qid].open = !questions[currentCourse][qid].open;
-        sessionStorage.questions = JSON.stringify(questions);
+        localStorage.questions = JSON.stringify(questions);
         drawQuestions(currentCourse);
       };
       var toggleprivate = function(qid) {
         questions[currentCourse][qid].private = !questions[currentCourse][qid].private;
-        sessionStorage.questions = JSON.stringify(questions);
+        localStorage.questions = JSON.stringify(questions);
         drawQuestions(currentCourse);
       };
       var switchCourse = function(course) {
@@ -441,13 +441,13 @@
         $("#loginName").html(email);
         $("#avatar").prop('src', 'http://www.gravatar.com/avatar/' + CryptoJS.MD5(email));
         sessionStorage.email = email;
-        sessionStorage.questions = JSON.stringify(questions);
+        localStorage.questions = JSON.stringify(questions);
       };
       var closeQuestion = function(qid) {
         questions[currentCourse][qid].open = false;
         drawQuestions(currentCourse);
         expand(qid);
-        sessionStorage.questions = JSON.stringify(questions);
+        localStorage.questions = JSON.stringify(questions);
       };
       var checkLogin = function() {
         var isValidEmailAddress= function(emailAddress) {
@@ -473,7 +473,9 @@
             });
         } else {
             email = sessionStorage.email;
-            questions = JSON.parse(sessionStorage.questions);
+        }
+        if(localStorage.questions) {
+            questions = JSON.parse(localStorage.questions);
         }
         drawQuestions(currentCourse);
         $("#email").keyup(function (e) {
