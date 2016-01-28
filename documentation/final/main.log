@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.12.10)  21 DEC 2015 22:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.12.10)  21 DEC 2015 23:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -261,23 +261,18 @@ LaTeX Info: Redefining \nameref on input line 29.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (43.86195pt too wide) in paragraph at lines 37--38
-[]\OT1/cmr/m/n/10 The pro-to-type of our ap-pli-ca-tion can be found on http://
-aropop.github.io/UIDproject/ 
- []
-
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 46.
+(Font)              <7> on input line 38.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 46.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 56.
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+(Font)              <5> on input line 38.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 58.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 56.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 58.
 
-Overfull \hbox (77.90192pt too wide) in paragraph at lines 46--70
+Overfull \hbox (77.90192pt too wide) in paragraph at lines 48--72
 [] 
  []
 
@@ -285,35 +280,22 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.71 \subsubsection
+l.73 \subsubsection
                    {Professor} [1
 
 ]
-Overfull \hbox (77.90192pt too wide) in paragraph at lines 73--103
+Overfull \hbox (77.90192pt too wide) in paragraph at lines 75--105
 [] 
  []
 
-[2]
-
-LaTeX Warning: File `img/orm.png' not found on input line 107.
-
-
-! Package pdftex.def Error: File `img/orm.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.107 	\includegraphics[scale=1]{img/orm.png}
-                                             
-? 
-! Interruption.
-\GenericError  ...                                
-                                                  \endgroup 
-l.107 	\includegraphics[scale=1]{img/orm.png}
-                                             
-? 
-[3] (./ctt.tex <../../ctt/ctttoplevel.png, id=66, 855.195pt x 241.90375pt>
+[2] <img/orm.png, id=67, 343.2825pt x 304.13625pt>
+File: img/orm.png Graphic file (type png)
+ <use img/orm.png>
+Package pdftex.def Info: img/orm.png used on input line 109.
+(pdftex.def)             Requested size: 343.28165pt x 304.1355pt.
+ [3]
+[4 <./img/orm.png>] (./ctt.tex
+<../../ctt/ctttoplevel.png, id=80, 855.195pt x 241.90375pt>
 File: ../../ctt/ctttoplevel.png Graphic file (type png)
 
 <use ../../ctt/ctttoplevel.png>
@@ -324,12 +306,19 @@ Overfull \hbox (82.59647pt too wide) in paragraph at lines 6--7
  [][] 
  []
 
-[4]
+
 Underfull \hbox (badness 10000) in paragraph at lines 10--12
 
  []
 
-<../../ctt/ctt1.jpg, id=73, 634.37pt x 340.27126pt>
+[5pdfTeX warning (ext4): destination with the same identifier (name{figure.0.1}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.12 
+      <../../ctt/ctttoplevel.png>]
+<../../ctt/ctt1.jpg, id=88, 634.37pt x 340.27126pt>
 File: ../../ctt/ctt1.jpg Graphic file (type jpg)
  <use ../../ctt/ctt1.jpg>
 Package pdftex.def Info: ../../ctt/ctt1.jpg used on input line 16.
@@ -339,20 +328,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
  []
 
-[5pdfTeX warning (ext4): destination with the same identifier (name{figure.0.1}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.21 
-     pdfTeX warning (ext4): destination with the same identifier (name{figure.0
-.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.21 
-      <../../ctt/ctttoplevel.png> <../../ctt/ctt1.jpg>]
-<../../ctt/ctt2.jpg, id=83, 191.71625pt x 191.71625pt>
+<../../ctt/ctt2.jpg, id=90, 191.71625pt x 191.71625pt>
 File: ../../ctt/ctt2.jpg Graphic file (type jpg)
 
 <use ../../ctt/ctt2.jpg>
@@ -363,7 +339,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--30
 
  []
 
-<../../ctt/ctt3.jpg, id=85, 1263.72125pt x 488.82625pt>
+<../../ctt/ctt3.jpg, id=92, 1263.72125pt x 488.82625pt>
 File: ../../ctt/ctt3.jpg Graphic file (type jpg)
 
 <use ../../ctt/ctt3.jpg>
@@ -374,35 +350,35 @@ Overfull \hbox (34.11931pt too wide) in paragraph at lines 34--35
  [][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--39
-
- []
-
-<../../ctt/ctt4.jpg, id=87, 592.2125pt x 265.99374pt>
-File: ../../ctt/ctt4.jpg Graphic file (type jpg)
- <use ../../ctt/ctt4.jpg>
-Package pdftex.def Info: ../../ctt/ctt4.jpg used on input line 43.
-(pdftex.def)             Requested size: 313.87112pt x 140.976pt.
-
-[6pdfTeX warning (ext4): destination with the same identifier (name{figure.0.3}
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.0.2}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.46 \end{figure}
+l.37 \end{figure}
                  pdfTeX warning (ext4): destination with the same identifier (n
-ame{figure.0.4}) has been already used, duplicate ignored
+ame{figure.0.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.46 \end{figure}
-                  <../../ctt/ctt2.jpg> <../../ctt/ctt3.jpg>]
+l.37 \end{figure}
+                  <../../ctt/ctt1.jpg> <../../ctt/ctt2.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+<../../ctt/ctt4.jpg, id=101, 592.2125pt x 265.99374pt>
+File: ../../ctt/ctt4.jpg Graphic file (type jpg)
+
+<use ../../ctt/ctt4.jpg>
+Package pdftex.def Info: ../../ctt/ctt4.jpg used on input line 43.
+(pdftex.def)             Requested size: 313.87112pt x 140.976pt.
+
 Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-<../../ctt/ctt5.jpg, id=96, 975.645pt x 340.27126pt>
+<../../ctt/ctt5.jpg, id=103, 975.645pt x 340.27126pt>
 File: ../../ctt/ctt5.jpg Graphic file (type jpg)
  <use ../../ctt/ctt5.jpg>
 Package pdftex.def Info: ../../ctt/ctt5.jpg used on input line 52.
@@ -412,32 +388,31 @@ Overfull \hbox (74.51918pt too wide) in paragraph at lines 52--53
  [][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--57
-
- []
-
-<../../ctt/ctt6.jpg, id=98, 148.555pt x 191.71625pt>
-File: ../../ctt/ctt6.jpg Graphic file (type jpg)
- <use ../../ctt/ctt6.jpg>
-Package pdftex.def Info: ../../ctt/ctt6.jpg used on input line 61.
-(pdftex.def)             Requested size: 78.73376pt x 101.60912pt.
-
-[7pdfTeX warning (ext4): destination with the same identifier (name{figure.0.5}
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.0.4}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.65 T
-      his can be done in a suspend-resume fashion from any of the other task...
-pdfTeX warning (ext4): destination with the same identifier (name{figure.0.6}) 
+l.56 A
+      sking a question is just a matter of showing the new question form, fi...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.0.5}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.65 T
-      his can be done in a suspend-resume fashion from any of the other task...
- <../../ctt/ctt4.jpg> <../../ctt/ctt5.jpg>]) (./designguidelines.tex
+l.56 A
+      sking a question is just a matter of showing the new question form, fi...
+ <../../ctt/ctt3.jpg> <../../ctt/ctt4.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+
+ []
+
+<../../ctt/ctt6.jpg, id=112, 148.555pt x 191.71625pt>
+File: ../../ctt/ctt6.jpg Graphic file (type jpg)
+ <use ../../ctt/ctt6.jpg>
+Package pdftex.def Info: ../../ctt/ctt6.jpg used on input line 61.
+(pdftex.def)             Requested size: 78.73376pt x 101.60912pt.
+) (./designguidelines.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -447,41 +422,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--3
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--5
-
- []
-
-[8pdfTeX warning (ext4): destination with the same identifier (name{figure.0.7}
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.0.6}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.12 \item S
-            tandards for use of keyboard: When in a form, the tab key is use...
- <../../ctt/ctt6.jpg>]) (./evaluationreport.tex) [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 147.
+l.3 
+    pdfTeX warning (ext4): destination with the same identifier (name{figure.0.
+7}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3 
+     <../../ctt/ctt5.jpg> <../../ctt/ctt6.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+[9]) (./designreport.tex) (./evaluationreport.tex)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 150.
  [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 147.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 150.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 147.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 147.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 150.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 150.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 863881C63EF2A9667758F27FB5CF059C;498.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 147.
+(rerunfilecheck)             Checksum: 2A0111975DBE02B0034506C40CB74BE2;545.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 150.
  ) 
 Here is how much of TeX's memory you used:
- 5629 strings out of 493085
- 82734 string characters out of 6136916
- 176363 words of memory out of 5000000
- 9025 multiletter control sequences out of 15000+600000
+ 5639 strings out of 493085
+ 82882 string characters out of 6136916
+ 176393 words of memory out of 5000000
+ 9031 multiletter control sequences out of 15000+600000
  8917 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,9n,28p,703b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,9n,28p,892b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -493,10 +469,10 @@ ublic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt8.pfb>
-Output written on main.pdf (11 pages, 271572 bytes).
+Output written on main.pdf (11 pages, 287628 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
- 108 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 184 PDF objects out of 1000 (max. 8388607)
+ 148 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 
