@@ -235,7 +235,120 @@
     <script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
     <script>
       var questions = {
-        "General": [{open:true, private:false, title:'What time does the library open?', contents: 'I want to study very early because i am a good student. Can I come in at 8 AM?', author:'good@student.be', followup:{title: "Yes!", contents: "The library is open from 7:30 AM, feel free to study from then!", author:"library@personel.be", followup:{title:"Thanks", contents: "Will sure do!", author: "good@student.be"}}}],
+        "General":[
+   {
+      open:true,
+      private:false,
+      title:"What time does the library open?",
+      contents:"I want to study very early because i am a good student. Can I come in at 8 AM?",
+      author:"good@student.be",
+      followup:{
+         title:"Yes!",
+         contents:"The library is open from 7:30 AM, feel free to study from then!",
+         author:"library@personel.be",
+            followup:{
+            title:"Thanks",
+            contents:"Will sure do!",
+            author:"good@student.be"
+         }
+      }
+   },
+   {
+      open:true,
+      private:false,
+      title:"Exam roster?",
+      contents:"I am unable to locate my exam roster, can you please tell me where to find it?",
+      author:"roos@student.be",
+      followup:{
+         title:"Exam roster url",
+         contents:"All the class and exam rosters can be found here: https://my.vub.ac.be/les-en-examenroosters",
+         author:"sac@personel.be"
+      }
+   },
+   {
+      open:true,
+      private:false,
+      title:"When will de grades be available?",
+      contents:"I have heard from some other students that they have already received some grades. When will I be able to see mine?",
+      author:"quentin@student.be",
+      followup:{
+         title:"Grade availability",
+         contents:"All grades will be made available by the 5th of february",
+         author:"sac@personel.be"
+      }
+   },
+   {
+      open:true,
+      private:false,
+      title:"umbrellas?",
+      contents:"I am an exchange student and I did not realize it would rain this often in Belgium. Is there a place where I can buy an umbrella?",
+      author:"li@student.be",
+   },
+   {
+      open:true,
+      private:false,
+      title:"I am unable to register for my courses",
+      contents:"I have tried to register myself for the course \"User Interface Design\" but I always receive an error even though I have all the required prerequisites",
+      author:"kwinten@student.be",
+   },
+   {
+      open:true,
+      private:false,
+      title:"Do we have to use Pointcarre?",
+      contents:"It is really confusing. Some classes exists twice, once for the English course and one for the Dutch course but the professor only updates 1 of them so I end up having to manually check this for every course.",
+      author:"arno@student.be",
+   },
+   {
+      open:true,
+      private:false,
+      title:"I lost my student card",
+      contents:"I lost my student card and I do not know how to request a new one",
+      author:"wout@student.be",
+      followup:{
+         title:"Requesting a new student card",
+         contents:"You can send an email to sac@vub.ac.be to request a new student card or visit us at the SAC. More information about the Student administration centrum can be found here: https://my.vub.ac.be/studentenadministratie",
+         author:"sac@personel.be"
+      }
+   },
+   {
+      open:true,
+      private:false,
+      title:"fraternity",
+      contents:"I am looking for information about the fraternities associated with the university",
+      author:"gaetan@student.be",
+   },
+   {
+      open:true,
+      private:false,
+      title:"I lost my course book",
+      contents:"I forgot my course book at the VUB resto! I have exam about this course in 3 days and I really need it to study",
+      author:"jelle@student.be",
+      followup:{
+         title:"Infopunt to the rescue",
+         contents:"You can check the list on this website to see if your book is found and waiting for you to be picked up: https://my.vub.ac.be/en/objects-found-student-information-hub. You can also send an email to info@vub.ac.be with your inquiry.",
+         author:"info@vub.ac.be"
+      }
+   },
+   {
+      open:true,
+      private:false,
+      title:"I am unable to connect to the WiFi",
+      contents:"I dont know what is going on but it just won't let me connect",
+      author:"rudy@student.be",
+   },
+   {
+      open:true,
+      private:false,
+      title:"SMS alert",
+      contents:"Some students told me they received an alert over text message but I didn't. Why didn't I get one and how can I register for the alerts?",
+      author:"vincent@student.be",
+      followup:{
+         title:"SMS alert registration",
+         contents:"You can register via this url: http://www.vub.ac.be/node/50409",
+         author:"info@vub.ac.be"
+      }
+   }
+],
         "Math": [{open:false, private:true, title:'Rather stupid question.', contents: 'How do I find the greatest denominator', author:'bad@student.be', followup:{title: "Ugh...", contents: "Just read your book", author:"mathteacher@personel.be", followup:{title:"OK", contents: "Will sure do!", author: "bad@student.be"}}}],
         "English": [],
         "French": [{open:true, private:false, title:'Whats the translation of this text?', contents: 'Bonjour, je m\'appelle jaque. J\'étudie a le VUB.', author:'french@student.be'}],
